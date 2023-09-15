@@ -1,5 +1,5 @@
 """
-URL configuration for Project3 project.
+URL configuration for pr8 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,11 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from posts import views
+from django.views.generic.base import TemplateView
+
 urlpatterns = [
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('admin/', admin.site.urls),
-    path('', include('posts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('accounts.urls')),
-    
+    path('users/', include('users.urls')),
+    path('users/', include('django.contrib.auth.urls'))
 ]
